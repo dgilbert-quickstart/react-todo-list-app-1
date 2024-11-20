@@ -1,7 +1,7 @@
 function Home() {
     return (
       <>
-        <h4>Home page/component</h4>
+        <h4>React TodoList App 1.0.3</h4>
       </>
     );
   }
