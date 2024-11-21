@@ -3,13 +3,20 @@ function TodoList(props) {
       <>
         <h4>{props.title}</h4>
         <div>
-          {"item [   ] add reset"}
+          <span>item: </span>
+          <input type="text" name="txtitemname" maxLength={25} placeholder="* add new item"></input>
+          {" "}
+          <button>Add</button>
+          {" "}
+          <a href="#/">reset</a>
         </div>
         <div>
           <p>{" msg "}</p>
         </div>
-        <div>
-          {" all | completed | in-completd"}
+        <div>          
+          <a href="#/">all</a> {" | "}
+          <a href="#/">completed</a> {" | "}
+          <a href="#/">in-completd</a>
         </div>
         <p></p>
         <div>
