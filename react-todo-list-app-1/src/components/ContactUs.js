@@ -1,9 +1,19 @@
+import { useEffect, useState } from "react";
+
 function ContactUs() {
+
+    const [msg, setMsg] = useState("");
+
+    useEffect((e)=>{
+
+
+    },[]) //1. onpage load [], 2. page unload, 3. on state update [msg], 4. un page /refresh
+
     return (
       <>
         <p></p>
         <p>Contact Us</p>
-        <p>{"msg"}</p>
+        <p>{msg}</p>
         <div className="output"></div>
         <p></p>
         <div>

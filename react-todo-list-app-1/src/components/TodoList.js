@@ -1,4 +1,14 @@
+import { useEffect, useState } from "react";
+
 function TodoList(props) {
+
+  const [msg, setMsg] = useState("");
+
+    useEffect((e)=>{
+
+
+    },[]) //1. onpage load [], 2. page unload, 3. on state update [msg], 4. un page /refresh
+
     return (
       <>
         <h4>{props.title}</h4>
@@ -11,7 +21,7 @@ function TodoList(props) {
           <a href="#/">reset</a>
         </div>
         <div>
-          <p>{" msg "}</p>
+          <p>{msg}</p>
         </div>
         <div>          
           <a href="#/">all</a> {" | "}
