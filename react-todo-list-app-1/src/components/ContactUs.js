@@ -9,6 +9,27 @@ function ContactUs() {
 
     },[]) //1. onpage load [], 2. page unload, 3. on state update [msg], 4. un page /refresh
 
+    const handleFormSubmit = (e) => {
+
+      e.preventDefault();
+      const _msg = "# handleFormSubmit"
+      setMsg(_msg)
+
+      //try/catch 
+
+    }
+
+    
+    const handleFormReset = (e) => {
+
+      e.preventDefault();
+      const _msg = "# handleFormReset"
+      setMsg(_msg)
+
+      //try/catch 
+      
+    }
+
     return (
       <>
         <p></p>
@@ -23,9 +44,9 @@ function ContactUs() {
             <label>* Email: </label><input name="txtemail" type="text"  maxLength={30}  placeholder="* email required"/><br></br>
             <label>* Comment: </label><br></br>
             <textarea name="txtcomment" rows={5} cols={30}  placeholder="* comment required"/><p></p>
-            <button>Submit</button>
+            <button onClick={handleFormSubmit}>Submit</button>
             {"   "}
-            <a href="#/">reset</a>
+            <a href="#/" onClick={handleFormReset}>reset</a>
         </form>
       </div>
     </>
