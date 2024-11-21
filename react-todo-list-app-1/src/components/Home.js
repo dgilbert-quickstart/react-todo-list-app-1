@@ -1,10 +1,14 @@
+import TodoList from "./TodoList";
+
 function Home() {
     return (
       <>
-        <h4>React TodoList App 1.0.5</h4>
+        <TodoList title="React TodoList App 1.0.6"/>
       </>
     );
   }
   
   export default Home;
+
+  
   
