@@ -30,7 +30,7 @@ function TodoList(props) {
           <p>
             <>
               <input type="checkbox" checked={false}/>{" "}
-              <span>item two</span> {" "}
+              <span>item two</span> {" "} 
               <button>x</button>              
             </>
           </p>
