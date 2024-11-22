@@ -208,7 +208,7 @@ function TodoList(props) {
         </div>
         <p></p>
         <div>          
-          {filtered_todolist.map((item)=>
+          {filtered_todolist && filtered_todolist.map((item)=>
             <p key={item.id}>
               <>
                 <input type="checkbox" checked={item.completed}/>{" "}
