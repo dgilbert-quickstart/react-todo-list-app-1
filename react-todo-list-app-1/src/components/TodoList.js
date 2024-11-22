@@ -35,7 +35,19 @@ function TodoList(props) {
           setMsg(_msg)
           return false; //stop button click 
         }
-        
+
+        var _newitem = {id: (new Date()).getTime(),name:txtnewitem, completed:false};
+
+        //todolist.push(_newitem);
+
+        setTodoList((prevval)=>{
+          
+            //spread operator - get all array items ie: array.push
+            const _lst = [...prevval,_newitem]
+           
+            return _lst;
+        });
+
         _msg = "# new item added"
         setMsg(_msg)
 
@@ -54,13 +66,54 @@ function TodoList(props) {
       }
     }
 
-    const displayItems = ()=>
-    {
-      return (
-        <p>item</p>
-      )
-      //try/catch
-    }
+    
+    const handleDeleteItem = (e, id) => {
+
+      e.preventDefault();
+
+      let _msg = "## handleDeleteItem";
+
+      try {
+         
+          let _index = -1;
+
+          const _item_found = todolist.find((item,index)=>{
+              _index = index;
+              return item.id == id;
+          })
+
+          const _name = (_item_found !== null )? _item_found.name:"";
+
+          const _ret = window.confirm(`Delete item - ${_name} ?`);
+
+          if(!_ret || _index === -1){
+              return true;
+          }
+
+          setTodoList((prevval)=>{
+
+              //spread operator ... - retieve previous array items 
+              let _lst = [...prevval]
+             
+              //-- delete 1 item found at index found 
+              _lst.splice(_index,1);
+
+              return _lst;
+          })
+         
+          _msg = `# item deleted: ${_name}, index:${id}`;
+          setMsg(_msg);
+
+          setNewItem("");
+
+      } catch (error) {            
+          
+          _msg = `handleDeleteItem::Error - ${error}`;
+          setMsg(_msg);
+          console.log(_msg);
+          console.log(error)
+      }
+   }
 
     return (
       <>
@@ -89,7 +142,7 @@ function TodoList(props) {
               <>
                 <input type="checkbox" checked={item.completed}/>{" "}
                 <span>{item.name}</span> {" "}
-                <button>x</button>              
+                <button onClick={(e)=>handleDeleteItem(e,item.id)}>x</button>              
               </>
             </p>
           )}          
