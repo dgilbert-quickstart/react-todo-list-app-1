@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import "../TodoList.css";
+
 //page level context state/data - all functions can access state/data
 const todolist_array = [
   {id:1,name:"item one",completed:false},
@@ -212,7 +214,7 @@ function TodoList(props) {
             <p key={item.id}>
               <>
                 <input type="checkbox" checked={item.completed}/>{" "}
-                <span>{item.name}</span> {" "}
+                <span style={{'text-decoration':(item.completed)?"line-through":""}}>{item.name}</span> {" "}
                 <button onClick={(e)=>handleDeleteItem(e,item.id)}>x</button>              
               </>
             </p>

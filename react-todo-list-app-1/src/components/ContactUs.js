@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "../ContactUs.css"
 
 function ContactUs() {
 
