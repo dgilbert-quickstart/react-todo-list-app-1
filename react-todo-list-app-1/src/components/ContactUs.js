@@ -12,10 +12,21 @@ function ContactUs() {
     const handleFormSubmit = (e) => {
 
       e.preventDefault();
-      const _msg = "# handleFormSubmit"
-      setMsg(_msg)
 
-      //try/catch 
+      try {
+
+        const _msg = "# handleFormSubmit"
+        setMsg(_msg)
+  
+      } catch (error) {
+
+        const _msg = "# handleFormSubmit::error"
+        setMsg(_msg)
+
+        console.log(_msg)
+        console.log(error)
+          
+      }
 
     }
 
@@ -23,10 +34,21 @@ function ContactUs() {
     const handleFormReset = (e) => {
 
       e.preventDefault();
-      const _msg = "# handleFormReset"
-      setMsg(_msg)
+      
+      try {
+      
+        const _msg = "# handleFormReset"
+        setMsg(_msg)
 
-      //try/catch 
+      } catch (error) {
+
+        const _msg = "# handleFormReset::error"
+        setMsg(_msg)
+
+        console.log(_msg)
+        console.log(error)
+        
+      }
       
     }
 
