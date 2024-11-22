@@ -19,9 +19,45 @@ function ContactUs() {
 
       try {
 
-        const _msg = "# handleFormSubmit"
+        let _msg = "# handleFormSubmit"
         setMsg(_msg)
+
+        if (txtfirstname == null | txtfirstname.trim().length == 0){
+          _msg = "# please enter a valid firstname"
+          setMsg(_msg)
+          return false; //stop button cliek 
+        }
+        
+        if (txtlastname == null | txtlastname.trim().length == 0){
+          _msg = "# please enter a valid lastname"
+          setMsg(_msg)
+          return false; //stop button cliek 
+        }
+
+        if (txtemail == null | txtemail.trim().length == 0){
+          _msg = "# please enter a valid email"
+          setMsg(_msg)
+          return false; //stop button cliek 
+        }
   
+        if (txtcomment == null | txtcomment.trim().length == 0){
+          _msg = "# please enter a valid comment"
+          setMsg(_msg)
+          return false; //stop button cliek 
+        }
+  
+        _msg = `# form sumbmit: ${txtfirstname} - ${txtlastname}  - ${txtemail} - ${txtcomment}`
+        console.log(_msg)
+
+        _msg = "form submitted"
+        setMsg(_msg)
+
+        _msg = ""
+        setFirstname(_msg)
+        setLastname(_msg)
+        setEmail(_msg)
+        setComment(_msg)
+
       } catch (error) {
 
         const _msg = "# handleFormSubmit::error"
