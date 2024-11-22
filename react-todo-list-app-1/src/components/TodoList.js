@@ -16,11 +16,13 @@ function TodoList(props) {
   const [txtnewitem, setNewItem] = useState("");
   //component/function state/array - functions with Todolist can acess function array and page/context arrray
   const [todolist, setTodoList] = useState(todolist_array);
+  const [filtered_todolist, setFilteredTodoList] = useState(null);
 
     useEffect((e)=>{
 
       //onComponent/page load 
       //ie: get data from api and update state/todolist
+      setFilteredTodoList(todolist);
 
     },[]) //1. onpage load [], 2. page unload, 3. on state update [msg], 4. un page /refresh
 
@@ -45,6 +47,8 @@ function TodoList(props) {
             //spread operator - get all array items ie: array.push
             const _lst = [...prevval,_newitem]
            
+            setFilteredTodoList(_lst);
+
             return _lst;
         });
 
@@ -98,6 +102,8 @@ function TodoList(props) {
               //-- delete 1 item found at index found 
               _lst.splice(_index,1);
 
+              setFilteredTodoList(_lst);
+
               return _lst;
           })
          
@@ -115,6 +121,71 @@ function TodoList(props) {
       }
    }
 
+    const handleDisplayAll = (e) => {
+        e.preventDefault();
+
+        let _msg = "# handleDisplayAll";
+
+        try {
+           
+           setFilteredTodoList(todolist);
+
+           setNewItem("");
+
+        } catch (error) {            
+            _msg = `handleDisplayAll::Error - ${error}`;
+            setMsg(_msg);
+            
+            console.log(_msg);
+            console.log(error)
+        }
+    }
+
+    const handleDisplayCompleted = (e) => {
+        e.preventDefault();
+
+        let _msg = "# handleDisplayCompleted";
+
+        try {
+           
+            setFilteredTodoList(todolist.filter((item)=>{
+                return (item.completed === true)
+            }));
+           
+           setNewItem("")
+           
+        } catch (error) {            
+            _msg = `handleDisplayCompleted::Error - ${error}`;
+            setMsg(_msg);
+            
+            console.log(_msg);
+            console.log(error);
+        }
+    }
+
+
+    const handleDisplayUnCompleted = (e) => {
+        e.preventDefault();
+
+        let _msg = "# handleDisplayUnCompleted";
+
+        try {
+           
+            setFilteredTodoList(todolist.filter((item)=>{
+                return (item.completed === false)
+            }));
+           
+           setNewItem("")
+           
+        } catch (error) {            
+            _msg = `handleDisplayUnCompleted::Error - ${error}`;
+            setMsg(_msg);
+            
+            console.log(_msg);
+            console.log(error);
+        }
+    }
+
     return (
       <>
         <div className="container">
@@ -131,13 +202,13 @@ function TodoList(props) {
           <p>{msg}</p>
         </div>
         <div>          
-          <a href="#/">all</a> {" | "}
-          <a href="#/">completed</a> {" | "}
-          <a href="#/">in-completd</a>
+          <a onClick={handleDisplayAll} href="#/">all</a> {" | "}
+          <a href="#/" onClick={handleDisplayCompleted}>completed</a> {" | "}
+          <a href="#/" onClick={handleDisplayUnCompleted}>in-completd</a>
         </div>
         <p></p>
         <div>          
-          {todolist.map((item)=>
+          {filtered_todolist.map((item)=>
             <p key={item.id}>
               <>
                 <input type="checkbox" checked={item.completed}/>{" "}
