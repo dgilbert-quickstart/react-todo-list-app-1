@@ -1,9 +1,21 @@
 import { useEffect, useState } from "react";
 
+//page level context state/data - all functions can access state/data
+const todolist_array = [
+  {id:1,name:"item one",completed:false},
+  {id:1,name:"item two",completed:false},
+  {id:1,name:"item three",completed:true},
+  {id:1,name:"item four",completed:false},
+  {id:1,name:"item five",completed:true},
+  {id:1,name:"item six",completed:false},  
+]
+
 function TodoList(props) {
 
   const [msg, setMsg] = useState("");
   const [txtnewitem, setNewItem] = useState("");
+  //component/function state/array - functions with Todolist can acess function array and page/context arrray
+  const [todolist, setTodoList] = useState(todolist_array);
 
     useEffect((e)=>{
 
