@@ -11,8 +11,9 @@ function TodoList(props) {
 
     return (
       <>
-        <h4>{props.title}</h4>
-        <div>
+        <div className="container">
+         <h4>{props.title}</h4>
+         <div>
           <span>item: </span>
           <input type="text" name="txtitemname" maxLength={25} placeholder="* add new item"></input>
           {" "}
@@ -58,7 +59,8 @@ function TodoList(props) {
               <button>x</button>              
             </>
           </p>
-        </div>
+         </div>
+       </div>
       </>
     );
   }
