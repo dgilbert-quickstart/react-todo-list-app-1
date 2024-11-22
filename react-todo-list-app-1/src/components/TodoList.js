@@ -188,6 +188,41 @@ function TodoList(props) {
         }
     }
 
+     const handleItemToggle = (e, id) => {
+
+      let _msg = "# handleItemToggle";
+
+       try
+       {
+            let _lst1 = todolist.map((item)=>{
+                return   (item.id == id)?                  
+                      {...item,completed:!item.completed}
+                  :
+                      {...item};                
+              });
+
+              let _lst2 = filtered_todolist.map((item)=>{
+                return   (item.id == id)?                  
+                      {...item,completed:!item.completed}
+                  :
+                      {...item};                
+              });
+
+            setTodoList(_lst1);
+            setFilteredTodoList(_lst2);
+
+            setNewItem("");
+
+        } catch (error) {            
+            
+            _msg = `handleItemToggle::Error - ${error}`;
+            setMsg(_msg);
+
+            console.log(_msg);
+            console.log(error)
+        }
+    }
+
     return (
       <>
         <div className="container">
@@ -213,7 +248,7 @@ function TodoList(props) {
           {filtered_todolist && filtered_todolist.map((item)=>
             <p key={item.id}>
               <>
-                <input type="checkbox" checked={item.completed}/>{" "}
+                <input onChange={(e)=>handleItemToggle(e,item.id)} type="checkbox" checked={item.completed}/>{" "}
                 <span style={{'text-decoration':(item.completed)?"line-through":""}}>{item.name}</span> {" "}
                 <button onClick={(e)=>handleDeleteItem(e,item.id)}>x</button>              
               </>
