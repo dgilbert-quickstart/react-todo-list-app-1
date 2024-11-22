@@ -22,7 +22,7 @@ function TodoList(props) {
 
       //onComponent/page load 
       //ie: get data from api and update state/todolist
-      setFilteredTodoList(todolist);
+      setFilteredTodoList(todolist); 
 
     },[]) //1. onpage load [], 2. page unload, 3. on state update [msg], 4. un page /refresh
 
