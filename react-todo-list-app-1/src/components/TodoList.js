@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 //page level context state/data - all functions can access state/data
 const todolist_array = [
   {id:1,name:"item one",completed:false},
-  {id:1,name:"item two",completed:false},
-  {id:1,name:"item three",completed:true},
-  {id:1,name:"item four",completed:false},
-  {id:1,name:"item five",completed:true},
-  {id:1,name:"item six",completed:false},  
+  {id:2,name:"item two",completed:false},
+  {id:3,name:"item three",completed:true},
+  {id:4,name:"item four",completed:false},
+  {id:5,name:"item five",completed:true},
+  {id:6,name:"item six",completed:false},  
 ]
 
 function TodoList(props) {
@@ -19,6 +19,8 @@ function TodoList(props) {
 
     useEffect((e)=>{
 
+      //onComponent/page load 
+      //ie: get data from api and update state/todolist
 
     },[]) //1. onpage load [], 2. page unload, 3. on state update [msg], 4. un page /refresh
 
@@ -37,6 +39,8 @@ function TodoList(props) {
         _msg = "# new item added"
         setMsg(_msg)
 
+        setNewItem("")
+
         console.log(_msg)
         console.log(txtnewitem)
 
@@ -48,6 +52,14 @@ function TodoList(props) {
         console.log(_msg)
         console.log(error)
       }
+    }
+
+    const displayItems = ()=>
+    {
+      return (
+        <p>item</p>
+      )
+      //try/catch
     }
 
     return (
@@ -71,35 +83,16 @@ function TodoList(props) {
           <a href="#/">in-completd</a>
         </div>
         <p></p>
-        <div>
-          <p>
-            <>
-              <input type="checkbox" checked={true}/>{" "}
-              <span>item one</span> {" "}
-              <button>x</button>              
-            </>
-          </p>
-          <p>
-            <>
-              <input type="checkbox" checked={false}/>{" "}
-              <span>item two</span> {" "} 
-              <button>x</button>              
-            </>
-          </p>
-          <p>
-            <>
-              <input type="checkbox" checked={true}/>{" "}
-              <span>item three</span> {" "}
-              <button>x</button>              
-            </>
-          </p>
-          <p>
-            <>
-              <input type="checkbox" checked={false}/>{" "}
-              <span>item four</span> {" "}
-              <button>x</button>              
-            </>
-          </p>
+        <div>          
+          {todolist.map((item)=>
+            <p key={item.id}>
+              <>
+                <input type="checkbox" checked={item.completed}/>{" "}
+                <span>{item.name}</span> {" "}
+                <button>x</button>              
+              </>
+            </p>
+          )}          
          </div>
        </div>
       </>
